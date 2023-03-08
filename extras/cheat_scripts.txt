@@ -1,0 +1,5 @@
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=MdNTn99nw5PxqpThM5GxT" -p 1433:1433 --name sql_server -d mcr.microsoft.com/mssql/server:2022-latest
+
+docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' sql_server
+
+docker run --name app -e "ConnectionStrings:containers_101=Server=172.17.0.2;Database=containers_101;TrustServerCertificate=True;User Id=sa;Password=MdNTn99nw5PxqpThM5GxT;" -p 80:80 -d lgeraher/containers_101:latest
