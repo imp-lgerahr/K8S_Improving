@@ -1,0 +1,40 @@
+﻿@using containers_101.DataModel
+@model ICollection<Employee>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web
+            apps with ASP.NET Core</a>.</p>
+</div>
+
+
+<table id="employees">
+    <thead>
+        <tr>
+            <th>employee_id</th>
+            <th>first_name</th>
+            <th>last_name</th>
+            <th>email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@employee.EmployeeId</td>
+                <td>@employee.FirstName</td>
+                <td>@employee.LastName</td>
+                <td>@employee.Email</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts{
+    <script lang="js">
+                let table = new DataTable('#employees');
+            </script>
+}
